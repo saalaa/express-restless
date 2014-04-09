@@ -2,8 +2,6 @@ var express = require('express');
 var request = require('supertest');
 var restless = require('../index');
 
-//req.headers.X_HTTP_METHOD_OVERRIDE
-
 var all = new restless.Resource({
 
   name: 'all',
