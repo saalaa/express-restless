@@ -2,10 +2,10 @@ var express = require('express');
 var request = require('supertest');
 var restless = require('../index');
 
-var asks = new restless.Resource({
+var articles = new restless.Resource({
 
-  id: 'ask',
-  name: 'asks',
+  id: 'article',
+  name: 'articles',
 
   get_collection: function (req, res, respond) {
     respond('OK', 'a');
@@ -20,7 +20,7 @@ var users = new restless.Resource({
 
   resources: {
     deactivate: true,
-    asks: asks
+    articles: articles
   },
 
   get_collection: function (req, res, respond) {
@@ -42,17 +42,17 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', asks.endpoint);
+server.use('/api', articles.endpoint);
 server.use('/api', users.endpoint);
 
 
 // Actual tests
 // ------------
 
-describe('GET /api/asks', function () {
+describe('GET /api/articles', function () {
   it('respond with `200`', function (done) {
     request(server)
-      .get('/api/asks')
+      .get('/api/articles')
       .expect(200, done);
   });
 });

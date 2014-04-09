@@ -1,10 +1,10 @@
 var express = require('express');
 var restless = require('../index');
 
-var asks = new restless.Resource({
+var articles = new restless.Resource({
 
-  id: 'ask',
-  name: 'asks',
+  id: 'article',
+  name: 'articles',
 
   get_collection: function (req, res, respond) {
     respond('OK', 'get_collection()');
@@ -19,7 +19,7 @@ var users = new restless.Resource({
 
   resources: {
     deactivate: true,
-    asks: asks
+    articles: articles
   },
 
   get_collection: function (req, res, respond) {
@@ -41,7 +41,7 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', asks.endpoint);
+server.use('/api', articles.endpoint);
 server.use('/api', users.endpoint);
 
 server.listen('6666');
