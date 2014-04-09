@@ -80,3 +80,11 @@ describe('GET /api/users/123/deactivate', function () {
       .expect(200, done);
   });
 });
+
+describe('GET /api/users/123/articles', function () {
+  it('respond with `200`', function (done) {
+    request(server)
+      .get('/api/users/123/articles')
+      .expect(200, done);
+  });
+});

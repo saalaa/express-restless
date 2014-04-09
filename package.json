@@ -4,18 +4,19 @@
   "description": "Resource-based framework for express.",
   "main": "index.js",
   "directories": {
-    "example": "examples"
+    "lib": "./lib"
   },
   "dependencies": {
-    "underscore": "~1.6.0"
+    "express": "~3.5.1",
+    "underscore": "~1.6.0",
+    "debug": "~0.8.0"
   },
   "devDependencies": {
-    "express": "~3.5.1",
     "mocha": "~1.18.2",
     "supertest": "~0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
