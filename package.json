@@ -1,0 +1,32 @@
+{
+  "name": "express-restless",
+  "version": "0.0.1",
+  "description": "Resource-based framework for express.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "express": "~3.5.1",
+    "mocha": "~1.18.2",
+    "supertest": "~0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:saalaa/express-restless.git"
+  },
+  "keywords": [
+    "express",
+    "resource",
+    "rest",
+    "api"
+  ],
+  "author": "Benoit Myard <benoit@saalaa.net>",
+  "license": "BSD-2-Clause"
+}
