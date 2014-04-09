@@ -38,8 +38,8 @@ var users = new restless.Resource({
 
 var server = express();
 
-server.use(express.urlencoded())
-server.use(express.json())
+server.use(express.urlencoded());
+server.use(express.json());
 
 server.use('/api', asks.endpoint);
 server.use('/api', users.endpoint);

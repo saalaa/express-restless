@@ -1,5 +1,5 @@
 var express = require('express');
-var request = require('supertest')
+var request = require('supertest');
 var restless = require('../index');
 
 var asks = new restless.Resource({
@@ -39,8 +39,8 @@ var users = new restless.Resource({
 
 var server = express();
 
-server.use(express.urlencoded())
-server.use(express.json())
+server.use(express.urlencoded());
+server.use(express.json());
 
 server.use('/api', asks.endpoint);
 server.use('/api', users.endpoint);
