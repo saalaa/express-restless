@@ -3,18 +3,20 @@ var restless = require('../index');
 
 var articles = new restless.Resource({
 
-  id: 'article',
   name: 'articles',
 
   get_collection: function (req, res, respond) {
-    respond('OK', 'get_collection()');
+    respond('OK', 'articles::get_collection(' + req.params.user + ')');
+  },
+
+  get_document: function (req, res, respond) {
+    respond('OK', 'articles::get_collection(' + req.params.user + ', ' + req.params.article + ')');
   }
 
 });
 
 var users = new restless.Resource({
 
-  id: 'user',
   name: 'users',
 
   resources: {
@@ -23,15 +25,15 @@ var users = new restless.Resource({
   },
 
   get_collection: function (req, res, respond) {
-    respond('OK', 'get_collection()');
+    respond('OK', 'users::get_collection()');
   },
 
   get_document: function (req, res, respond) {
-    respond('OK', 'get_document()');
+    respond('OK', 'users::get_document(' + req.params.user + ')');
   },
 
   get_deactivate: function (req, res, respond) {
-    respond('OK', 'get_deactivate()');
+    respond('OK', 'users::get_deactivate(' + req.params.user + ')');
   }
 
 });
