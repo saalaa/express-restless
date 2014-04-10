@@ -2,6 +2,10 @@
   "name": "express-restless",
   "version": "0.0.3",
   "description": "Resource-based framework for express.",
+  "homepage": "https://bitbucket.org/saalaa/express-restless",
+  "bugs": {
+    "url": "https://bitbucket.org/saalaa/express-restless/issues"
+  },
   "main": "index.js",
   "directories": {
     "lib": "./lib"
@@ -23,6 +27,9 @@
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:saalaa/express-restless.git"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
   },
   "keywords": [
     "express",
