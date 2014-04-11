@@ -49,9 +49,9 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', all.endpoint);
-server.use('/api', none.endpoint);
-server.use('/api', some.endpoint);
+server.use('/api', all.endpoint());
+server.use('/api', none.endpoint());
+server.use('/api', some.endpoint());
 
 
 // Actual tests
