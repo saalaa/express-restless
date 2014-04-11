@@ -79,22 +79,29 @@ describe('/api/responses', function () {
     'post',
     'put',
     'patch',
-    'del'
+    'delete'
   ];
 
   methods.forEach(function (method) {
+    var attr = method === 'delete' ? 'del' : method;
     var name = method.toUpperCase();
 
-    it(name + ' should respond with `200` on collection', function (done) {
+    it(name + ' should respond with `200` and `' + method + '_collection` on collection', function (done) {
+      var regexp = new RegExp(method + '_collection');
+
       request(server)
-        [method]('/api/responses')
-        .expect(200, done);
+        [attr]('/api/responses')
+        .expect(200)
+        .expect(regexp, done);
     });
 
-    it(name + ' should respond with `200` on document', function (done) {
+    it(name + ' should respond with `200` and `' + method + '_document` on document', function (done) {
+      var regexp = new RegExp(method + '_document');
+
       request(server)
-        [method]('/api/responses/123')
-        .expect(200, done);
+        [attr]('/api/responses/123')
+        .expect(200)
+        .expect(regexp, done);
     });
 
   });
