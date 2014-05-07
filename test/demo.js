@@ -8,7 +8,11 @@ var articles = new restless.Resource({
   name: 'articles',
 
   get_collection: function (req, res, respond) {
-    respond('OK', 'a');
+    respond('OK', req.params.user);
+  },
+
+  get_document: function (req, res, respond) {
+    respond('OK', req.params.article);
   }
 
 });
@@ -24,15 +28,15 @@ var users = new restless.Resource({
   },
 
   get_collection: function (req, res, respond) {
-    respond('OK', 'b');
+    respond('OK', 'noe');
   },
 
   get_document: function (req, res, respond) {
-    respond('OK', 'c');
+    respond('OK', req.params.user);
   },
 
   get_deactivate: function (req, res, respond) {
-    respond('OK', 'd');
+    respond('OK', req.params.user);
   }
 
 });
@@ -61,7 +65,16 @@ describe('GET /api/users', function () {
   it('respond with `200`', function (done) {
     request(server)
       .get('/api/users')
-      .expect(200, done);
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        res.body.data.should.equal('noe');
+
+        done();
+      });
   });
 });
 
@@ -69,7 +82,16 @@ describe('GET /api/users/123', function () {
   it('respond with `200`', function (done) {
     request(server)
       .get('/api/users/123')
-      .expect(200, done);
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        res.body.data.should.equal('123');
+
+        done();
+      });
   });
 });
 
@@ -77,7 +99,16 @@ describe('GET /api/users/123/deactivate', function () {
   it('respond with `200`', function (done) {
     request(server)
       .get('/api/users/123/deactivate')
-      .expect(200, done);
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        res.body.data.should.equal('123');
+
+        done();
+      });
   });
 });
 
@@ -85,6 +116,33 @@ describe('GET /api/users/123/articles', function () {
   it('respond with `200`', function (done) {
     request(server)
       .get('/api/users/123/articles')
-      .expect(200, done);
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        res.body.data.should.equal('123');
+
+        done();
+      });
   });
 });
+
+describe('GET /api/users/123/articles/456', function () {
+  it('respond with `200`', function (done) {
+    request(server)
+      .get('/api/users/123/articles/456')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        res.body.data.should.equal('456');
+
+        done();
+      });
+  });
+});
+
