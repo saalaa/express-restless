@@ -65,8 +65,8 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', responses.endpoint());
-server.use('/api', more_responses.endpoint());
+server.use('/api', responses.endpoint('/responses'));
+server.use('/api', more_responses.endpoint('/more-responses'));
 
 
 // Actual tests

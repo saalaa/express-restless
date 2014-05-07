@@ -18,7 +18,7 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', pagination.endpoint());
+server.use('/api', pagination.endpoint('/pagination'));
 
 
 // Actual tests

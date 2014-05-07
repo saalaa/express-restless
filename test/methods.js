@@ -50,9 +50,9 @@ server.use(express.methodOverride());
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', all.endpoint());
-server.use('/api', none.endpoint());
-server.use('/api', some.endpoint());
+server.use('/api', all.endpoint('/all'));
+server.use('/api', none.endpoint('/none'));
+server.use('/api', some.endpoint('/some'));
 
 
 // Actual tests

@@ -46,8 +46,8 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', articles.endpoint());
-server.use('/api', users.endpoint());
+server.use('/api', articles.endpoint('/articles'));
+server.use('/api', users.endpoint('/users'));
 
 
 // Actual tests

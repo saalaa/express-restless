@@ -35,9 +35,9 @@ var server = express();
 server.use(express.urlencoded());
 server.use(express.json());
 
-server.use('/api', unauthorized_1.endpoint());
-server.use('/api', unauthorized_2.endpoint());
-server.use('/api', authorized.endpoint());
+server.use('/api', unauthorized_1.endpoint('/unauthorized-1'));
+server.use('/api', unauthorized_2.endpoint('/unauthorized-2'));
+server.use('/api', authorized.endpoint('/authorized'));
 
 
 // Actual tests
