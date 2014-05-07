@@ -46,6 +46,7 @@ var some = new restless.Resource({
 
 var server = express();
 
+server.use(express.methodOverride());
 server.use(express.urlencoded());
 server.use(express.json());
 
