@@ -60,6 +60,7 @@ var server = express();
 
 server.use(express.urlencoded());
 server.use(express.json());
+server.use(restless.api());
 
 server.use('/api', responses.endpoint('/responses'));
 server.use('/api', more_responses.endpoint('/more-responses'));

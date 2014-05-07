@@ -41,6 +41,7 @@ var server = express();
 server.use(express.methodOverride());
 server.use(express.urlencoded());
 server.use(express.json());
+server.use(restless.api());
 
 server.use('/api', all.endpoint('/all'));
 server.use('/api', none.endpoint('/none'));

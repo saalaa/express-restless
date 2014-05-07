@@ -28,6 +28,7 @@ var server = express();
 
 server.use(express.urlencoded());
 server.use(express.json());
+server.use(restless.api());
 
 server.use('/api', unauthorized_1.endpoint('/unauthorized-1'));
 server.use('/api', unauthorized_2.endpoint('/unauthorized-2'));
