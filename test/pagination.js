@@ -5,8 +5,6 @@ var restless = require('../index');
 
 var pagination = new restless.Resource({
 
-  name: 'pagination',
-
   get_collection: function (req, res, respond) {
     respond('OK', this.paginate(req));
   }

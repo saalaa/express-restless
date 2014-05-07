@@ -5,7 +5,6 @@ var restless = require('../index');
 var articles = new restless.Resource({
 
   id: 'article',
-  name: 'articles',
 
   get_collection: function (req, res, respond) {
     respond('OK', req.params.user);
@@ -20,7 +19,6 @@ var articles = new restless.Resource({
 var users = new restless.Resource({
 
   id: 'user',
-  name: 'users',
 
   resources: {
     deactivate: true,

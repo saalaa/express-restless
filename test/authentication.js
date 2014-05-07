@@ -4,15 +4,11 @@ var restless = require('../index');
 
 var unauthorized_1 = new restless.Resource({
 
-  name: 'unauthorized-1',
-
   is_authenticated: false
 
 });
 
 var unauthorized_2 = new restless.Resource({
-
-  name: 'unauthorized-2',
 
   is_authenticated: function () {
     return false;
@@ -21,8 +17,6 @@ var unauthorized_2 = new restless.Resource({
 });
 
 var authorized = new restless.Resource({
-
-  name: 'authorized',
 
   is_authenticated: function () {
     return true;

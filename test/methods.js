@@ -4,8 +4,6 @@ var restless = require('../index');
 
 var all = new restless.Resource({
 
-  name: 'all',
-
   get_collection: function (req, res, respond) {
     respond('OK', 'a');
   },
@@ -28,15 +26,9 @@ var all = new restless.Resource({
 
 });
 
-var none = new restless.Resource({
-
-  name: 'none'
-
-});
+var none = new restless.Resource();
 
 var some = new restless.Resource({
-
-  name: 'some',
 
   get_collection: function (req, res, respond) {
     respond('OK', 'a');

@@ -4,8 +4,6 @@ var restless = require('../index');
 
 var responses = new restless.Resource({
 
-  name: 'responses',
-
   get_collection: function (req, res, respond) {
     respond('OK', 'get_collection');
   },
@@ -49,8 +47,6 @@ var responses = new restless.Resource({
 });
 
 var more_responses = new restless.Resource({
-
-  name: 'more-responses',
 
   get_collection: function (req, res, respond) {
     respond('OK', 'get_collection', {
