@@ -1,11 +1,15 @@
-var api = require('./lib/api');
-var http = require('./lib/http');
-var utils = require('./lib/utils');
 var Resource = require('./lib/resource');
+var http = require('./lib/http');
+var install = require('./lib/install');
+var notFound = require('./lib/notFound');
+var respond = require('./lib/respond');
+var utils = require('./lib/utils');
 
 module.exports = {
-  api: api,
+  Resource: Resource,
   http: http,
-  utils: utils,
-  Resource: Resource
+  install: install,
+  notFound: notFound,
+  respond: respond,
+  utils: utils
 };
