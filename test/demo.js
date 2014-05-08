@@ -3,7 +3,6 @@ var request = require('supertest');
 var restless = require('../index');
 
 var articles = new restless.Resource({
-
   id: 'article',
 
   get_collection: function (req, res, respond) {
@@ -13,11 +12,9 @@ var articles = new restless.Resource({
   get_document: function (req, res, respond) {
     respond('OK', req.params.article);
   }
-
 });
 
 var users = new restless.Resource({
-
   id: 'user',
 
   resources: {
@@ -36,17 +33,21 @@ var users = new restless.Resource({
   get_deactivate: function (req, res, respond) {
     respond('OK', req.params.user);
   }
-
 });
+
+var api = express();
+
+api.use(express.urlencoded());
+api.use(express.json());
+
+restless.install(api);
+
+articles.install(api, '/articles');
+users.install(api, '/users');
 
 var server = express();
 
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(restless.api());
-
-server.use('/api', articles.endpoint('/articles'));
-server.use('/api', users.endpoint('/users'));
+server.use('/api', api);
 
 
 // Actual tests
@@ -144,4 +145,3 @@ describe('GET /api/users/123/articles/456', function () {
       });
   });
 });
-

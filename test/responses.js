@@ -56,14 +56,19 @@ var more_responses = new restless.Resource({
 
 });
 
+var api = express();
+
+api.use(express.urlencoded());
+api.use(express.json());
+
+restless.install(api);
+
+responses.install(api, '/responses');
+more_responses.install(api, '/more-responses');
+
 var server = express();
 
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(restless.api());
-
-server.use('/api', responses.endpoint('/responses'));
-server.use('/api', more_responses.endpoint('/more-responses'));
+server.use('/api', api);
 
 
 // Actual tests

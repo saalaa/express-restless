@@ -36,16 +36,21 @@ var some = new restless.Resource({
 
 });
 
+var api = express();
+
+api.use(express.methodOverride());
+api.use(express.urlencoded());
+api.use(express.json());
+
+restless.install(api);
+
+all.install(api, '/all');
+none.install(api, '/none');
+some.install(api, '/some');
+
 var server = express();
 
-server.use(express.methodOverride());
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(restless.api());
-
-server.use('/api', all.endpoint('/all'));
-server.use('/api', none.endpoint('/none'));
-server.use('/api', some.endpoint('/some'));
+server.use('/api', api);
 
 
 // Actual tests

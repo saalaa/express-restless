@@ -11,13 +11,18 @@ var pagination = new restless.Resource({
 
 });
 
+var api = express();
+
+api.use(express.urlencoded());
+api.use(express.json());
+
+restless.install(api);
+
+pagination.install(api, '/pagination');
+
 var server = express();
 
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(restless.api());
-
-server.use('/api', pagination.endpoint('/pagination'));
+server.use('/api', api);
 
 
 // Actual tests

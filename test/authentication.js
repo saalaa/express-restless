@@ -24,15 +24,20 @@ var authorized = new restless.Resource({
 
 });
 
+var api = express();
+
+api.use(express.urlencoded());
+api.use(express.json());
+
+restless.install(api);
+
+unauthorized_1.install(api, '/unauthorized-1');
+unauthorized_2.install(api, '/unauthorized-2');
+authorized.install(api, '/authorized');
+
 var server = express();
 
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(restless.api());
-
-server.use('/api', unauthorized_1.endpoint('/unauthorized-1'));
-server.use('/api', unauthorized_2.endpoint('/unauthorized-2'));
-server.use('/api', authorized.endpoint('/authorized'));
+server.use('/api', api);
 
 
 // Actual tests
