@@ -27,13 +27,13 @@ Getting Started
     };
 
     var articles = new restless.Resource({
-      get_collection: function (req, res, respond) {
+      get_collection: function (req, res) {
         var rec = _.where(data.articles, {user: req.params.user});
 
         if (rec.length) {
-          respond('OK', rec);
+          res.respond('OK', rec);
         } else {
-          respond('NotFound');
+          res.respond('NotFound');
         }
       }
     });
@@ -46,24 +46,24 @@ Getting Started
         articles: articles
       },
 
-      get_collection: function (req, res, respond) {
-        respond('OK', data.users);
+      get_collection: function (req, res) {
+        res.respond('OK', data.users);
       },
 
-      get_document: function (req, res, respond) {
+      get_document: function (req, res) {
         var rec = _.where(data.users, {id: req.params.user});
 
         if (rec.length) {
-          respond('OK', rec[0]);
+          res.respond('OK', rec[0]);
         } else {
-          respond('NotFound');
+          res.respond('NotFound');
         }
       },
 
-      get_count: function (req, res, respond) {
+      get_count: function (req, res) {
         var rec = _.where(data.articles, {user: req.params.user});
 
-        respond('OK', rec.length);
+        res.respond('OK', rec.length);
       }
     });
 
