@@ -6,8 +6,9 @@ var restless = require('../index');
 var filters = new restless.Resource({
 
   filters: {
-    name: [null, '$in'],
-    age: ['$gt']
+    'criteria.*': ['$in'],
+    'name': [null, '$in'],
+    'age': ['$gt']
   },
 
   get_collection: function (req, res, respond) {
@@ -81,6 +82,22 @@ describe('Filters handling', function () {
 
         should(res.body.data.errors[0]).have.property('error', 'filter');
         should(res.body.data.errors[0]).have.property('value', 'age');
+
+        done();
+      });
+  });
+
+  it('should handle pattern options', function (done) {
+    request(server)
+      .get('/api/filters?criteria__$in=jean&criteria.color__$in=yellow')
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+
+        should(res.body.data.errors).not.equal(null);
+
+        should(res.body.data.filters).have.property('criteria.color');
 
         done();
       });
