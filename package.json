@@ -1,6 +1,6 @@
 {
   "name": "express-restless",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Resource-based framework for express.",
   "homepage": "https://bitbucket.org/saalaa/express-restless",
   "bugs": {
