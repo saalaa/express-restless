@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var request = require('supertest');
 var restless = require('../index');
 
@@ -12,10 +13,7 @@ var exception = new restless.Resource({
 
 var api = express();
 
-api.use(express.urlencoded());
-api.use(express.json());
-
-restless.install(api);
+api.use(bodyParser.json());
 
 exception.install(api, '/exception');
 

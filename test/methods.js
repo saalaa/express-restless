@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var request = require('supertest');
 var restless = require('../index');
 
@@ -38,11 +40,17 @@ var some = new restless.Resource({
 
 var api = express();
 
-api.use(express.methodOverride());
-api.use(express.urlencoded());
-api.use(express.json());
+api.use(methodOverride(null, {
+  methods: [
+    'GET',
+    'PUT',
+    'POST',
+    'PATCH',
+    'DELETE'
+  ]
+}));
 
-restless.install(api);
+api.use(bodyParser.json());
 
 all.install(api, '/all');
 none.install(api, '/none');

@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var request = require('supertest');
 var restless = require('../index');
 
@@ -26,10 +27,7 @@ var authorized = new restless.Resource({
 
 var api = express();
 
-api.use(express.urlencoded());
-api.use(express.json());
-
-restless.install(api);
+api.use(bodyParser.json());
 
 unauthorized_1.install(api, '/unauthorized-1');
 unauthorized_2.install(api, '/unauthorized-2');

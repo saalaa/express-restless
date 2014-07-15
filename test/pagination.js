@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var request = require('supertest');
 var should = require('should');
 var restless = require('../index');
@@ -13,10 +14,7 @@ var pagination = new restless.Resource({
 
 var api = express();
 
-api.use(express.urlencoded());
-api.use(express.json());
-
-restless.install(api);
+api.use(bodyParser.json());
 
 pagination.install(api, '/pagination');
 
