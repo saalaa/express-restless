@@ -1,10 +1,10 @@
 {
   "name": "express-restless",
-  "version": "0.0.17",
-  "description": "Resource-based framework for express.",
-  "homepage": "https://bitbucket.org/saalaa/express-restless",
+  "version": "0.0.18",
+  "description": "Resource-based REST framework for Express.js",
+  "homepage": "https://github.com/saalaa/express-restless",
   "bugs": {
-    "url": "https://bitbucket.org/saalaa/express-restless/issues"
+    "url": "https://github.com/saalaa/express-restless/issues"
   },
   "main": "index.js",
   "directories": {
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:saalaa/express-restless.git"
+    "url": "git@github.com:saalaa/express-restless.git"
   },
   "engines": {
     "node": ">= 0.8.0"
@@ -38,6 +38,6 @@
     "rest",
     "api"
   ],
-  "author": "Benoit Myard <benoit@saalaa.net>",
+  "author": "Benoit Myard <myardbenoit@gmail.com>",
   "license": "BSD-2-Clause"
 }
